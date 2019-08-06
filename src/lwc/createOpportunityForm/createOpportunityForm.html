@@ -1,0 +1,49 @@
+<template>
+    <div class="slds-m-around_large">
+        <div if:false={isLoaded} class="slds-is-relative">
+            <lightning-spinner alternative-text="Loading...">
+            </lightning-spinner>
+        </div>
+    </div>
+    <lightning-card title="Opportunity Information">
+        <template if:true={accountRecord}>
+            <h1>Selected Account : <b>{accountRecord.Name}</b></h1>
+        </template>
+        <lightning-record-edit-form id="opportunityForm" object-api-name="Opportunity" layout-type="compact"
+                                    horizontal-align="stretch" title="Opportunity Information" onsuccess={handleOpportunitySuccess}
+                                    onsubmit={handleOnOpportunitySubmit} onload={handleOnLoad}>
+            <lightning-messages>
+            </lightning-messages>
+            <lightning-layout horizontal-align="stretch">
+                <lightning-layout-item flexibility="auto" >
+                    <lightning-input-field field-name='Amount' required></lightning-input-field>
+                </lightning-layout-item>
+
+                <lightning-layout-item flexibility="auto" >
+                    <lightning-input-field field-name='StageName' required></lightning-input-field>
+                </lightning-layout-item>
+
+                <lightning-layout-item flexibility="auto" >
+                    <lightning-input-field field-name='Name' required></lightning-input-field>
+                </lightning-layout-item>
+
+
+            <lightning-layout-item flexibility="auto" >
+                <lightning-input-field field-name='CloseDate' required></lightning-input-field>
+            </lightning-layout-item>
+            </lightning-layout>
+
+            <lightning-layout horizontal-align="stretch">
+                <lightning-layout-item flexibility="auto" >
+                    <lightning-button variant="brand" type="submit" name="save" label="Save"
+                                      style="padding-left: 0.75rem;">
+                    </lightning-button>
+                    <lightning-button label="Cancel" variant="brand" onclick={cancelOpportunityScreen}
+                                      style="padding-left: 0.75rem;">
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>

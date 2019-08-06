@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Bitcoin to USD converter" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <p>Actual value of 1 Bitcoin in USD: {bitcoinInUSD}</p>
+            <lightning-input type ="number" step="0.001" label="Bitcoin Value" value={bitcoinValue} onchange={changeHandler}></lightning-input>
+            <lightning-input type="number" step="0.001" label="USD Value" value = {usdInputValue} onchange={usdChangeHandler}></lightning-input>
+            <!-- https://salesforce.stackexchange.com/questions/218102/lightninginputfield-not-allowing-decimal-numbers-to-be-inserted-->
+        </div>
+    </lightning-card>
+</template>

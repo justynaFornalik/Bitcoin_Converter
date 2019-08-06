@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Create Opportunities" icon-name="custom:custom14"></lightning-card>
+    <div class="slds-m-around_medium">
+        <lightning-input label="Amount" value={inputAmmount}></lightning-input>
+        <lightning-input type="date" name="inputDate"  value={inputDate} label="Closed Date" placeholder="Enter Date"></lightning-input>
+        <template if:true={StagePicklistValues.data}>
+            <lightning-combobox name="progress"
+                                label="Stage"
+                                value={value}
+                                placeholder="-Select-"
+                                options={StagePicklistValues.data.values}
+                                onchange={handleChange} >
+            </lightning-combobox>
+        </template>
+        <p>Some text</p>
+        <template if:true={options}>
+            <lightning-checkbox-group
+                    name="checkboxGroup"
+                    label="Checkbox Group"
+                    options={options}
+                    value={options}
+                    onchange={handleChangeCheckbox}
+                    required>
+            </lightning-checkbox-group>
+        </template>
+    </div>
+    <lightning-layout-item>
+        <lightning-button label="CREATE OPPORTUNITY" variant="brand" onclick={handleCreate}></lightning-button>
+    </lightning-layout-item>
+</template>

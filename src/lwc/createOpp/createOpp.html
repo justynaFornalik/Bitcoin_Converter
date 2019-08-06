@@ -1,0 +1,41 @@
+<!--
+ - Created by 212724387 on 08.07.2019.
+ -->
+
+<!-- Create Opp -->
+<template>
+    <lightning-card title="Create Opportunities" icon-name="custom:custom14"></lightning-card>
+    <div class="slds-m-around_medium">
+        <lightning-input label="Amount" value={inputAmmount}></lightning-input>
+        <lightning-input type="date" name="inputDate"  value={inputDate} label="Closed Date" placeholder="Enter Date"></lightning-input>
+        <template if:true={StagePicklistValues.data}>
+            <lightning-combobox name="progress"
+                                label="Stage"
+                                value={value}
+                                placeholder="-Select-"
+                                options={StagePicklistValues.data.values}
+                                onchange={handleChange} >
+            </lightning-combobox>
+        </template>
+        <p>Some text</p>
+        <template if:true={options}>
+            <lightning-checkbox-group
+                    name="checkboxGroup"
+                    label="Checkbox Group"
+                    options={options}
+                    value={options}
+                    onchange={handleChangeCheckbox}
+                    required>
+            </lightning-checkbox-group>
+            <!--https://stackoverflow.com/questions/19605078/how-to-use-pagination-on-html-tables/19605115-->
+            <!--https://developer.salesforce.com/docs/component-library/bundle/lightning-checkbox-group/documentation-->
+        </template>
+        <template if:true={accounts.data}>
+            <template for:each={accounts.data} for:item="acc">
+                <p key={acc.Id}>{acc.Name}</p>
+            </template>
+        </template>
+    </div>
+    <p>something</p>
+
+</template>
